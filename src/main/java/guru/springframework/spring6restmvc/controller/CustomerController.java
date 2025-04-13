@@ -29,7 +29,7 @@ public class CustomerController {
 
     @RequestMapping(value = "/{customerId}", method = RequestMethod.GET)
     public Customer getCustomerById(@PathVariable("customerId") UUID id) {
-        log.debug("Getting customer with id: " + id.toString() + " in the controller");
+        log.debug("Getting customer with id: " + id.toString() + " in the controller - 1234");
         return customerService.getCustomerById(id);
     }
 }
