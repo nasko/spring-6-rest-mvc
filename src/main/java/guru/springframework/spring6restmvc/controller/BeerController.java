@@ -3,7 +3,6 @@ package guru.springframework.spring6restmvc.controller;
 import guru.springframework.spring6restmvc.services.BeerService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
 import guru.springframework.spring6restmvc.model.Beer;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,11 +21,11 @@ public class BeerController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Beer> listBeers() {
-        return beerService.listBeers();
+        return beerService.getAllBeers();
     }
 
     @RequestMapping(
-            value = "{beerId}",
+            value = "/{beerId}",
             method = RequestMethod.GET)
     public Beer getBeerById(@PathVariable("beerId") UUID id) {
         log.debug("Getting beer with id: " + id.toString() + " in the controller");

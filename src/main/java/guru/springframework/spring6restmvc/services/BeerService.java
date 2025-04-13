@@ -10,7 +10,7 @@ import java.util.UUID;
  */
 public interface BeerService {
 
-    List<Beer> listBeers();
+    List<Beer> getAllBeers();
 
     Beer getBeerById(UUID id);
 }
