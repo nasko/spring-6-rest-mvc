@@ -21,13 +21,13 @@ public class BeerController {
 
     @PostMapping
     // @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<String> handlePost(@RequestBody Beer beer) {
+    public ResponseEntity handlePost(@RequestBody Beer beer) {
         Beer savedBeer = beerService.saveNewBeer(beer);
 
         HttpHeaders responseHeaders = new HttpHeaders();
          responseHeaders.add("Location", "/api/v1/beer/" + savedBeer.getId().toString());
 
-        return new ResponseEntity<>(responseHeaders, HttpStatus.CREATED);
+        return new ResponseEntity(responseHeaders, HttpStatus.CREATED);
     }
 
     @RequestMapping(method = RequestMethod.GET)
