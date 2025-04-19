@@ -33,6 +33,13 @@ public class CustomerController {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity patchById(@PathVariable("id") UUID id, @RequestBody Customer customer) {
+        customerService.patchById(id, customer);
+
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
     @PostMapping
     public ResponseEntity createCustomer(@RequestBody Customer customer) {
         Customer savedCustomer = customerService.createCustomer(customer);

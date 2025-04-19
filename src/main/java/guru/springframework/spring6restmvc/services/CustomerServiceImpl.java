@@ -3,6 +3,7 @@ package guru.springframework.spring6restmvc.services;
 import guru.springframework.spring6restmvc.model.Customer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -79,6 +80,18 @@ public class CustomerServiceImpl implements CustomerService {
             throw new RuntimeException("Customer not found");
         }
 
+    }
+
+    @Override
+    public void patchById(UUID id, Customer customer) {
+        Customer existingCustomer = customerMap.get(id);
+        if (StringUtils.hasText(customer.getName())) {
+            existingCustomer.setName(customer.getName());
+        }
+        if (customer.getVersion() != null) {
+            existingCustomer.setVersion(customer.getVersion());
+        }
+        existingCustomer.setUpdateDate(LocalDateTime.now());
     }
 
     @Override

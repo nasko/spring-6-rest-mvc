@@ -32,6 +32,13 @@ public class BeerController {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity patchById(@PathVariable("id") UUID id, @RequestBody Beer beer) {
+        beerService.patchById(id, beer);
+
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
     @PostMapping
     // @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity handlePost(@RequestBody Beer beer) {
