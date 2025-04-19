@@ -19,6 +19,13 @@ import java.util.UUID;
 public class CustomerController {
     private final CustomerService customerService;
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteById(@PathVariable("id") UUID id) {
+        customerService.deleteById(id);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+
     @PutMapping("/{id}")
     public ResponseEntity updateById(@PathVariable("id") UUID id, @RequestBody Customer customer) {
         customerService.updateById(id, customer);
