@@ -50,8 +50,7 @@ class BeerControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id", is(testBeer.getId().toString())))
-                .andExpect(jsonPath("$.beerName", is(testBeer.getBeerName())))
-        ;
+                .andExpect(jsonPath("$.beerName", is(testBeer.getBeerName())));
 
     }
 
